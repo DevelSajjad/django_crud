@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crud'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,15 @@ WSGI_APPLICATION = 'crud_operation.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_crud',  # Change this to your actual DB name
+        'USER': 'root',  # Default Laragon user is 'root'
+        'PASSWORD': '',  # Leave empty if you haven't set a password
+        'HOST': '127.0.0.1',  # Laragon runs MySQL locally
+        'PORT': '3306',  # Default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
