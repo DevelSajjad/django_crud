@@ -31,12 +31,10 @@ def studentUpdate(request, id):
     if request.method == 'POST':
       form = StudentRegistration(request.POST, instance=student)
       if form.is_valid():
-        userSaveData = User(
-            name = form.cleaned_data['name'],
-            email = form.cleaned_data['email'],
-            password = form.cleaned_data['password']
-        )
-        userSaveData.save()
+        student.name = form.cleaned_data['name'],
+        student.email = form.cleaned_data['email'],
+        student.password = form.cleaned_data['password']
+        student.save()
         return HttpResponseRedirect('/')
     else:
         
